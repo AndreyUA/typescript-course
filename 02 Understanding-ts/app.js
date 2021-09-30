@@ -7,7 +7,8 @@ function add(n1, n2, showResult, phrase) {
         return n1 + n2;
     }
 }
-var number1 = 5;
+var number1;
+number1 = 5;
 var number2 = 2.8;
 var printResult = true;
 var resulPhrase = "Result is: ";
