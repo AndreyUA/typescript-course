@@ -7,3 +7,5 @@ function printResult(num: number): void {
 }
 
 printResult(add(5, 12));
+
+// console.log(printResult(add(5, 12)));
