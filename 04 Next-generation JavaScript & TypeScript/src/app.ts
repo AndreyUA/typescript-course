@@ -18,7 +18,7 @@ age = 31;
 // Will work in valilla JS
 // console.log(isOld);
 
-const add = (a: number, b: number) => a + b;
+const add = (a: number, b: number = 10) => a + b;
 
 // console.log(add(4, 2));
 
@@ -34,3 +34,4 @@ if (button) {
 }
 
 printOutput(add(4, 2));
+printOutput(add(3));
