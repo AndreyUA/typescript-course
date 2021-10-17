@@ -18,34 +18,52 @@ age = 31;
 // Will work in valilla JS
 // console.log(isOld);
 
-const add = (a: number, b: number = 10) => a + b;
+// const add = (a: number, b: number = 10) => a + b;
 
-// console.log(add(4, 2));
+// // console.log(add(4, 2));
 
-const printOutput: (a: number | string) => void = output =>
-  console.log(output);
+// const printOutput: (a: number | string) => void = output =>
+//   console.log(output);
 
-const button = document.querySelector("button");
+// const button = document.querySelector("button");
 
-if (button) {
-  button.addEventListener("click", event => {
-    console.log(event);
-  });
-}
+// if (button) {
+//   button.addEventListener("click", event => {
+//     console.log(event);
+//   });
+// }
 
-printOutput(add(4, 2));
-printOutput(add(3));
+// printOutput(add(4, 2));
+// printOutput(add(3));
 
-const hobbies = ['Sports', 'Programming'];
-const activeHobbies = ['Hiking', ...hobbies];
+// const hobbies = ['Sports', 'Programming'];
+// const activeHobbies = ['Hiking', ...hobbies];
 
 // activeHobbies.push(...hobbies);
 
-console.log(activeHobbies);
+// console.log(activeHobbies);
 
 const person = {
-    name: 'Andrey',
-    age: 30,
+  name: "Andrey",
+  age: 30,
 };
 
 const copiedPerson = { ...person };
+
+const add = (...numbers: Array<number>) => {
+  return numbers.reduce((currentResult, currentValue) => {
+    return currentResult + currentValue;
+  }, 0);
+};
+
+const addedNumbers = add(5, 10, 6, 13);
+
+// const add = (...numbers: [number, number, number]) => {
+//   return numbers.reduce((currentResult, currentValue) => {
+//     return currentResult + currentValue;
+//   }, 0);
+// };
+
+// const addedNumbers = add(5, 10, 6);
+
+console.log(addedNumbers);
