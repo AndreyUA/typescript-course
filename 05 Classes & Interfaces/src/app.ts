@@ -98,7 +98,6 @@ const it = new ITDepartment("d1", ["Admin"]);
 
 it.addEmployee("Andrey");
 it.addEmployee("Another Andrey");
-
 it.describe();
 it.printEmployeeInformation();
 
