@@ -157,3 +157,22 @@ const errorBag: ErrorContainer = {
   email: "Not a valid email!",
   username: "Must start with a capital character!",
 };
+
+// Function overload
+
+type CompareType = string | number;
+
+function newAdd(a: number, b: number): number;
+function newAdd(a: string, b: string): string;
+function newAdd(a: number, b: string): string;
+function newAdd(a: string, b: number): string;
+function newAdd(a: CompareType, b: CompareType): CompareType {
+  if ("string" === typeof a || "string" === typeof b) {
+    return a.toString() + b.toString();
+  }
+
+  return a + b;
+}
+
+const result1 = newAdd(1, 5);
+const result2 = newAdd("Test", "Message");
