@@ -126,6 +126,7 @@ const moveAnimal = (animal: Animal) => {
 moveAnimal({ type: "bird", flyingSpeed: 60 });
 console.log("--------------------------");
 moveAnimal({ type: "horse", runningSpeed: 65 });
+console.log("--------------------------");
 
 // Type casting
 
@@ -137,3 +138,22 @@ const userInputElement = document.getElementById(
 ) as HTMLInputElement;
 
 userInputElement.value = "Hi there!";
+
+// Index properties
+
+interface ErrorContainer {
+  /*
+  FOR EXAMPLE:
+  {
+    email: 'Not a valid email',
+    username: 'Must start wit a character'
+  }
+  */
+
+  [key: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: "Not a valid email!",
+  username: "Must start with a capital character!",
+};
