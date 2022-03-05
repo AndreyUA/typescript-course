@@ -26,3 +26,17 @@ console.log(mergeObj1.name);
 // const mergeObjArrow = <T, U>(objA: T, objB: U) => ({ ...objA, ...objB });
 
 // const testMergeObj = mergeObjArrow({ test1: "test" }, { test2: 456 });
+
+console.log("----------------------------");
+// Working with Constraints
+const mergeObjArrow = <T extends object, U extends object>(
+  objA: T,
+  objB: U
+) => ({ ...objA, ...objB });
+const mergeObj3 = mergeObjArrow(
+  { name: "Andrey", hobbies: ["sports"] },
+  { name: 31 }
+);
+
+console.log(mergeObj3);
+console.log("----------------------------");
