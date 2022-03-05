@@ -176,3 +176,16 @@ function newAdd(a: CompareType, b: CompareType): CompareType {
 
 const result1 = newAdd(1, 5);
 const result2 = newAdd("Test", "Message");
+
+// Optiona chaining
+const fetchUserData = {
+  id: "u1",
+  name: "Andrey",
+  job: {
+    title: "CEO",
+    description: "My own company",
+  },
+};
+
+console.log(fetchUserData?.job?.title);
+console.log("--------------------------");
