@@ -74,3 +74,50 @@ function extractAndConvert<T extends object, U extends keyof T>(
 }
 
 extractAndConvert({ name: "Andrey", age: 31 }, "name");
+
+// Generic classes
+class DataStorage<T extends string | number | boolean> {
+  private data: Array<T> = [];
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+
+  removeItem(item: T) {
+    if (this.data.indexOf(item) === -1) {
+      return;
+    }
+    this.data.splice(this.data.indexOf(item), 1);
+  }
+
+  getItems() {
+    return [...this.data];
+  }
+}
+
+const textStorage = new DataStorage<string>();
+textStorage.addItem("Andrey");
+textStorage.addItem("Kirill");
+textStorage.addItem("Olya");
+textStorage.addItem("TEST");
+textStorage.removeItem("TEST");
+console.log(textStorage.getItems());
+
+const numberStorage = new DataStorage<number>();
+numberStorage.addItem(123);
+numberStorage.addItem(78);
+numberStorage.addItem(46);
+console.log(numberStorage.getItems());
+numberStorage.removeItem(78);
+numberStorage.addItem(654);
+console.log(numberStorage.getItems());
+
+// const objStorage = new DataStorage<object>();
+// const objForRemoveTest = { name: "Test name for remove" };
+// objStorage.addItem({ name: "Andrey" });
+// objStorage.addItem({ name: "Kirill" });
+// objStorage.addItem({ name: "Olya" });
+// objStorage.addItem(objForRemoveTest);
+// objStorage.addItem({ name: "Test name for test" });
+// objStorage.removeItem(objForRemoveTest);
+// console.log(objStorage.getItems());
