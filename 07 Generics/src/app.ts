@@ -121,3 +121,29 @@ console.log(numberStorage.getItems());
 // objStorage.addItem({ name: "Test name for test" });
 // objStorage.removeItem(objForRemoveTest);
 // console.log(objStorage.getItems());
+
+// Generic utility types
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeUntil: Date;
+}
+
+function createCourseGoal(
+  title: string,
+  description: string,
+  date: Date
+): CourseGoal {
+  let courseGoal: Partial<CourseGoal> = {};
+
+  courseGoal.title = title;
+  courseGoal.description = description;
+  courseGoal.completeUntil = date;
+
+  return courseGoal as CourseGoal;
+}
+
+const names: Readonly<Array<string>> = ["Test1", "Test2"];
+
+// names.push("Test3");
+// names.pop();
