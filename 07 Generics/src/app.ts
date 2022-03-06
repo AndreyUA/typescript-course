@@ -40,3 +40,26 @@ const mergeObj3 = mergeObjArrow(
 
 console.log(mergeObj3);
 console.log("----------------------------");
+
+// Generic function
+interface Lengthy {
+  length: number;
+}
+
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+  let descriptionTest = "Got no value";
+
+  if (element.length === 1) {
+    descriptionTest = `Got 1 element.`;
+  } else if (element.length > 1) {
+    descriptionTest = `Got ${element.length} elements.`;
+  }
+
+  return [element, descriptionTest];
+}
+
+console.log(countAndDescribe("test"));
+console.log(countAndDescribe(["test", "test", 789, 654, 12]));
+console.log(countAndDescribe([]));
+console.log(countAndDescribe([6]));
+console.log("----------------------------");
