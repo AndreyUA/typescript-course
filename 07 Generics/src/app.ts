@@ -63,3 +63,14 @@ console.log(countAndDescribe(["test", "test", 789, 654, 12]));
 console.log(countAndDescribe([]));
 console.log(countAndDescribe([6]));
 console.log("----------------------------");
+
+// keyof Constraint
+
+function extractAndConvert<T extends object, U extends keyof T>(
+  obj: T,
+  key: U
+): T[U] {
+  return obj[key];
+}
+
+extractAndConvert({ name: "Andrey", age: 31 }, "name");
