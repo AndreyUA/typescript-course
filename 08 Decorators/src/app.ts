@@ -19,9 +19,13 @@ console.log(person);
 console.log("===============================");
 
 // Decorator factory
-const LoggerFactory = (logString: string) => (constructor: Function) => {
-  console.log(logString);
-  console.log(constructor);
+const LoggerFactory = (logString: string) => {
+  console.log("THIS IS @LoggerFactory");
+
+  return (constructor: Function) => {
+    console.log(logString);
+    console.log(constructor);
+  };
 };
 
 @LoggerFactory("LOGGING - PERSON")
@@ -39,8 +43,12 @@ console.log(personForFactory);
 console.log("===============================");
 
 // More decorators
-const WithTemplate =
-  (template: string, hookId: string) => (constructor: any) => {
+const WithTemplate = (template: string, hookId: string) => {
+  console.log("THIS IS @WithTemplate");
+
+  return (constructor: any) => {
+    console.log("rendering a template");
+
     const hookElement = document.getElementById(hookId);
 
     const person = new constructor();
@@ -51,6 +59,7 @@ const WithTemplate =
       hookElement.querySelector("h1")!.textContent = person.name;
     }
   };
+};
 
 @WithTemplate("<h1>my person object</h1>", "app")
 class AnotherPerson {
@@ -61,3 +70,14 @@ class AnotherPerson {
   }
 }
 console.log("===============================");
+
+// Multiple decorators
+@LoggerFactory("MULTI DECORATOR")
+@WithTemplate("<h1>my person object</h1>", "app")
+class PersonWithMultiDecorators {
+  name = "Andrey";
+
+  constructor() {
+    console.log("creating person object...");
+  }
+}
