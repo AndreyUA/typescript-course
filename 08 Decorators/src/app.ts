@@ -37,3 +37,27 @@ const personForFactory = new Person();
 
 console.log(personForFactory);
 console.log("===============================");
+
+// More decorators
+const WithTemplate =
+  (template: string, hookId: string) => (constructor: any) => {
+    const hookElement = document.getElementById(hookId);
+
+    const person = new constructor();
+
+    if (hookElement) {
+      hookElement.innerHTML = template;
+
+      hookElement.querySelector("h1")!.textContent = person.name;
+    }
+  };
+
+@WithTemplate("<h1>my person object</h1>", "app")
+class AnotherPerson {
+  name = "Andrey";
+
+  constructor() {
+    console.log("creating person object...");
+  }
+}
+console.log("===============================");
