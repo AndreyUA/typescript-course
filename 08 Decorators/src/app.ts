@@ -147,3 +147,40 @@ function Log4(target: any, name: string | Symbol, position: number) {
   console.log(name);
   console.log(position);
 }
+
+console.log("===============================");
+
+// Returning a class in a class decorator
+const WithTemplateWithReturn = (template: string, hookId: string) => {
+  console.log("THIS IS @WithTemplateWithReturn");
+
+  return function <T extends { new (...args: Array<any>): { name: string } }>(
+    originalConstructor: T
+  ) {
+    return class extends originalConstructor {
+      constructor(..._args: Array<any>) {
+        super();
+
+        console.log("rendering a template");
+
+        const hookElement = document.getElementById(hookId);
+
+        if (hookElement) {
+          hookElement.innerHTML = template;
+
+          hookElement.querySelector("h1")!.textContent = this.name;
+        }
+      }
+    };
+  };
+};
+
+@LoggerFactory("MULTI DECORATOR")
+@WithTemplateWithReturn("<h1>my person object</h1>", "app")
+class PersonWithClassDecorators {
+  name = "Andrey from PersonWithClassDecorators";
+
+  constructor() {
+    console.log("creating person object...");
+  }
+}
