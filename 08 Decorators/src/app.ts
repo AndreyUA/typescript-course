@@ -86,7 +86,12 @@ console.log("===============================");
 // Property decorators
 function LoggerProperty(target: any, propertyName: string | Symbol) {
   console.log("Property decorator!");
-  console.log(`Target: ${target}, propertyName: ${propertyName}`);
+
+  console.log("Target: ");
+  console.log(target);
+
+  console.log("Property name: ");
+  console.log(propertyName);
 }
 class Product {
   @LoggerProperty
