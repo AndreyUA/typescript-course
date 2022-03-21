@@ -184,3 +184,40 @@ class PersonWithClassDecorators {
     console.log("creating person object...");
   }
 }
+
+// Other decorator (autobind decorator)
+function Autobind(
+  _target: any,
+  _methodName: string,
+  descriptor: PropertyDescriptor
+) {
+  const originalMethod = descriptor.value;
+  const adjDescriptor: PropertyDescriptor = {
+    configurable: true,
+    enumerable: false,
+    get() {
+      const boundFunction = originalMethod.bind(this);
+
+      return boundFunction;
+    },
+  };
+
+  return adjDescriptor;
+}
+
+class Printer {
+  message = "Thiw works!";
+
+  @Autobind
+  showMessage(): void {
+    console.log(this.message);
+  }
+}
+
+const p = new Printer();
+
+p.showMessage();
+
+const button = document.querySelector("button")!;
+// button.addEventListener("click", p.showMessage.bind(p));
+button.addEventListener("click", p.showMessage);
